@@ -1,0 +1,37 @@
+---
+title: "README"
+author: "Gonzalo García-Castro"
+date: "Last update: `r format(Sys.Date(), '%d/%m/%Y')`"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# zombie-movies
+Database of zombie movies.
+
+
+```{r import}
+
+library(readr)
+library(gt)
+
+df <- read_csv("zombie-movies.csv")
+
+df %>% 
+    gt() %>% 
+    cols_label(
+        title = "Title",
+        type = "Type",
+        year = "Year",
+        author = "Director"
+    ) %>% 
+    tab_style(
+        cell_text(weight = "bold"),
+        cells_column_labels()
+    ) %>% 
+    tab_options(container.overflow.y = TRUE) %>% 
+    as_raw_html()
+```

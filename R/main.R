@@ -8,8 +8,11 @@ library(janitor)
 df <- read_xlsx(here("data", "raw", "zombies.xlsx")) %>% 
     clean_names() %>% 
     filter(type %in% c("Film", "Series")) %>% 
-    mutate_at(vars(title, author), str_replace, "/", ", ") %>% 
-    mutate(type = str_replace(type, "Series", "TV Show")) %>%
-    select(title, type, year, author)
+    mutate(
+        author = str_replace(author, "/", ", "), 
+        type = str_replace(type, "Series", "TV Show")
+    ) %>%
+    select(title, type, year, author) %>% 
+    arrange(-year)
 
 write.csv(df, "zombie-movies.csv", row.names = FALSE)
