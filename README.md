@@ -1,55 +1,10 @@
 README
 ================
-Gonzalo García-Castro
 Last update: 21/01/2022
 
 # zombie-movies
 
 Database of zombie movies.
-
-``` r
-library(readr)
-```
-
-    ## Warning: package 'readr' was built under R version 4.0.5
-
-``` r
-library(gt)
-```
-
-    ## Warning: package 'gt' was built under R version 4.0.5
-
-``` r
-df <- read_csv("zombie-movies.csv")
-```
-
-    ## Rows: 775 Columns: 4
-
-    ## -- Column specification --------------------------------------------------------
-    ## Delimiter: ","
-    ## chr (3): title, type, author
-    ## dbl (1): year
-
-    ## 
-    ## i Use `spec()` to retrieve the full column specification for this data.
-    ## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
-
-``` r
-df %>% 
-    gt() %>% 
-    cols_label(
-        title = "Title",
-        type = "Type",
-        year = "Year",
-        author = "Director"
-    ) %>% 
-    tab_style(
-        cell_text(weight = "bold"),
-        cells_column_labels()
-    ) %>% 
-    tab_options(container.overflow.y = TRUE) %>% 
-    as_raw_html()
-```
 
 <table style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif; display: table; border-collapse: collapse; margin-left: auto; margin-right: auto; color: #333333; font-size: 16px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3;">
   

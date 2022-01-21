@@ -1,6 +1,5 @@
 ---
 title: "README"
-author: "Gonzalo García-Castro"
 date: "Last update: `r format(Sys.Date(), '%d/%m/%Y')`"
 output: github_document
 ---
@@ -13,7 +12,7 @@ knitr::opts_chunk$set(echo = TRUE)
 Database of zombie movies.
 
 
-```{r import}
+```{r import, echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
 
 library(readr)
 library(gt)
@@ -32,6 +31,9 @@ df %>%
         cell_text(weight = "bold"),
         cells_column_labels()
     ) %>% 
-    tab_options(container.overflow.y = TRUE) %>% 
+    tab_options(
+        container.overflow.y = TRUE,
+        container.overflow.x = TRUE
+    ) %>% 
     as_raw_html()
 ```
