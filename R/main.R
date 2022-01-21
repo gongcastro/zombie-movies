@@ -1,6 +1,7 @@
 library(here)
 library(readxl)
 library(dplyr)
+library(tidyr)
 library(stringr)
 library(janitor)
 
@@ -13,6 +14,8 @@ df <- read_xlsx(here("data", "raw", "zombies.xlsx")) %>%
         type = str_replace(type, "Series", "TV Show")
     ) %>%
     select(title, type, year, author) %>% 
-    arrange(-year)
+    arrange(-year) %>% 
+    drop_na()
+    
 
 write.csv(df, "zombie-movies.csv", row.names = FALSE)
