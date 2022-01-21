@@ -16,6 +16,7 @@ Database of zombie movies.
 
 library(readr)
 library(gt)
+library(htmltools)
 
 df <- read_csv("zombie-movies.csv")
 
@@ -35,5 +36,6 @@ df %>%
         container.overflow.y = TRUE,
         container.overflow.x = TRUE
     ) %>% 
-    as_raw_html()
+    as_raw_html() %>% 
+    div(style = "height:600px; overflow-y: scroll") 
 ```
