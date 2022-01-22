@@ -17,7 +17,7 @@ df <- read_xlsx(here("data", "raw", "zombies.xlsx")) %>%
         author = str_replace(author, "/", ", "), 
         type = str_replace(type, "Series", "TV Show")
     ) %>%
-    select(title, type, year, author) %>% 
+    select(title, type, year, country, author) %>% 
     arrange(-year) %>% 
     drop_na(year)
     

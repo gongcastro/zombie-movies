@@ -26,6 +26,7 @@ df %>%
         title = "Title",
         type = "Type",
         year = "Year",
+        country = "Country",
         author = "Director"
     ) %>% 
     tab_style(
